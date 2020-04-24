@@ -65,8 +65,10 @@ try {
         $text = $_POST['text'];
         $admin = userIsAdmin($conn) ? 1 : 0;
         $color = $_POST['color'];
+
+        $queryText = $conn->real_escape_string($text);
         $conn->query("INSERT INTO `entries`(`email`, `color`, `admin`, `text`) 
-                                        VALUES ('$email', '$color', '$admin', '$text');");
+                                        VALUES ('$email', '$color', '$admin', '$queryText');");
     }
 
 
